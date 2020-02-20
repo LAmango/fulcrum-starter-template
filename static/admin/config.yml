@@ -1,7 +1,7 @@
 backend:
-  name: git-gateway
-  #name: proxy
-  #proxy_url: http://localhost:8081/api/v1
+  #name: git-gateway
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
   branch: master
 
 media_folder: static/assets
@@ -18,3 +18,22 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: body, label: Body, widget: markdown }
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home
+        file: "content/pages/home.md"
+        fields:
+          - { name: "templatekey", label: "Template Key",  widget: "hidden", default: "home-page" }
+          - { name: path, label: Path, widget: hidden }
+          - { name: title, label: Title }
+          - { name: subtitle, label: Subtitle }
+      - name: about
+        label: About
+        file: "content/pages/about.md"
+        fields:
+          - { name: "templatekey", label: "Template Key",  widget: "hidden", default: "about-page" }
+          - { name: path, label: Path, widget: hidden }
+          - { name: title, label: Title }
+          - { name: subtitle, label: Subtitle }
