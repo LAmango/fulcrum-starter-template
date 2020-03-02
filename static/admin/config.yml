@@ -10,11 +10,13 @@ public_folder: assets
 collections:
   - name: blog
     label: Blog
-    folder: content/blog
+    folder: cms/blog
     create: true
+    slug: "{{slug}}"
     fields:
       - { name: path, label: Path }
       - { name: date, label: Date, widget: date }
+      - { name: image, label: Image, widget: image }
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: body, label: Body, widget: markdown }
@@ -23,7 +25,7 @@ collections:
     files:
       - name: home
         label: Home
-        file: "content/pages/home.md"
+        file: "cms/pages/home.md"
         fields:
           - { name: "templatekey", label: "Template Key",  widget: "hidden", default: "home-page" }
           - { name: path, label: Path, widget: hidden }
@@ -31,7 +33,7 @@ collections:
           - { name: subtitle, label: Subtitle }
       - name: about
         label: About
-        file: "content/pages/about.md"
+        file: "cms/pages/about.md"
         fields:
           - { name: "templatekey", label: "Template Key",  widget: "hidden", default: "about-page" }
           - { name: path, label: Path, widget: hidden }
