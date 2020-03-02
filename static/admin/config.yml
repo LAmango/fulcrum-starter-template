@@ -1,8 +1,8 @@
 backend:
-  #name: git-gateway
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
+  name: git-gateway
   branch: master
+
+local_backend: false
 
 media_folder: static/assets
 public_folder: assets
