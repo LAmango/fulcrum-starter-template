@@ -9,19 +9,21 @@ class BlogPostPreview extends Component {
     }
   }
 
-  _getImage = () => {
+  componentDidMount() {
     const image = this.props.entry.getIn(['data', 'image'])
+    console.log("image: ", image);
     if(image) {
+      this.setState({image: image})
       this.props.getAsset(image).then(value => {
         this.setState({image: value.toString()})
       })
+
     }
   }
 
   render() {
     const title = this.props.entry.getIn(['data', 'title']);
     const body = this.props.widgetFor('body');
-    this._getImage();
     return (
       <div>
           <div>{title}</div>
