@@ -1,34 +1,35 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
+import BlogPostTemplate from "../../src/templates/BlogPostTemplate"
 
 class BlogPostPreview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: null
+      image: ""
     }
+  }
+
+  _getImage = async image => {
+    const value = await this.props.getAsset(image);
+    this.setState({image: value.toString()})
   }
 
   componentDidMount() {
     const image = this.props.entry.getIn(['data', 'image'])
-    console.log("image: ", image);
-    if(image) {
-      this.setState({image: image})
-      this.props.getAsset(image).then(value => {
-        this.setState({image: value.toString()})
-      })
-
-    }
+    this._getImage(image);
   }
 
   render() {
     const title = this.props.entry.getIn(['data', 'title']);
-    const body = this.props.widgetFor('body');
+    const { widgetFor } = this.props;
     return (
       <div>
-          <div>{title}</div>
-          <div dangerouslySetInnerHTML={{ __html: body}} />
-          <img src={this.state.image} alt="blog post image" />
+          <BlogPostTemplate
+            title={title}
+            image={this.state.image}
+            content={widgetFor('body')}
+          />
       </div>
     )
   }

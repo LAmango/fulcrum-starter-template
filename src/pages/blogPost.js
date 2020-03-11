@@ -1,11 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import BlogPostTemplate from "../templates/BlogPostTemplate";
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-class BlogPostTemplate extends React.Component {
+class BlogPost extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title
@@ -17,16 +18,11 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            display: `block`,
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html}} />
-        <hr/>
+        <BlogPostTemplate
+          title={post.frontmatter.title}
+          content={post.html}
+          image={post.frontmatter.image}
+        />
         <Bio />
 
         <ul
@@ -58,25 +54,32 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
+export default BlogPost;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } } ) {
-        id
-        html
-        excerpt(pruneLength: 160)
-        frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            description
+    query BlogPostBySlug($slug: String!) {
+        site {
+            siteMetadata {
+                title
+                author
+            }
+        }
+        markdownRemark(fields: { slug: { eq: $slug } } ) {
+            id
+            html
+            excerpt(pruneLength: 160)
+            frontmatter {
+                title
+                date(formatString: "MMMM DD, YYYY")
+                description
+                image {
+                    childImageSharp {
+                        fluid(maxWidth: 600) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
+            }
         }
     }
-  }
 `

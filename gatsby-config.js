@@ -1,3 +1,10 @@
+var netlifyCmsPaths = {
+  resolve: `gatsby-plugin-netlify-cms-paths`,
+  options: {
+    cmsConfig: `/static/admin/config.yml`,
+  },
+}
+
 module.exports = {
   siteMetadata: {
     // edit below
@@ -22,6 +29,14 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    netlifyCmsPaths,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/static/assets/`,
+        name: `images`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -30,17 +45,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/static/assets`,
-        name: `assets`,
-      },
-    },
-    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          'gatsby-remark-relative-images',
+          netlifyCmsPaths,
           {
             resolve: 'gatsby-remark-images',
             options: {
