@@ -10,6 +10,7 @@ class BlogPostPreview extends Component {
   }
 
   componentDidMount() {
+    /*
     const image = this.props.entry.getIn(['data', 'image'])
     console.log("image: ", image);
     if(image) {
@@ -19,6 +20,7 @@ class BlogPostPreview extends Component {
       })
 
     }
+     */
   }
 
   render() {

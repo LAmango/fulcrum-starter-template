@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: master
 
-local_backend: false
+local_backend: true
 
 media_folder: static/assets
 public_folder: assets
@@ -14,6 +14,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { name: "templatekey", label: "Template Key",  widget: "hidden", default: "blog-page" }
       - { name: path, label: Path }
       - { name: date, label: Date, widget: datetime }
       - { name: image, label: Image, widget: image }

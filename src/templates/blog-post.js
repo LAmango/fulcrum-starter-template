@@ -1,31 +1,26 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
+import Img from "gatsby-image";
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark;
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
-
+const BlogPostTemplate = props => {
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={props.location} title={props.title}>
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={props.title}
+          description={props.description || props.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            display: `block`,
-          }}
-        >
-          {post.frontmatter.date}
+        <h1>{props.title}</h1>
+        <p>
+          {props.date}
         </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html}} />
+        {props.image.childImageSharp ?
+          <Img fluid={props.image.childImageSharp.fluid} alt={props.title}/> :
+          <img src={props.image} alt={props.title} />
+        }
+        <div dangerouslySetInnerHTML={{ __html: props.html}} />
         <hr/>
         <Bio />
 
@@ -39,26 +34,43 @@ class BlogPostTemplate extends React.Component {
           }}
         >
           <li>
-            {previous && (
-              <Link to={`blog${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
+            {props.previous && (
+              <Link to={`blog${props.previous.fields.slug}`} rel="prev">
+                ← {props.previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
-            {next && (
-              <Link to={`blog${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
+            {props.next && (
+              <Link to={`blog${props.next.fields.slug}`} rel="next">
+                {props.next.frontmatter.title} →
               </Link>
             )}
           </li>
         </ul>
       </Layout>
     )
-  }
 }
 
-export default BlogPostTemplate
+const BlogPost = props => {
+  const post = props.data.markdownRemark;
+  const siteTitle = props.data.site.siteMetadata.title
+  const { previous, next } = props.pageContext
+
+  return (
+    <BlogPostTemplate
+      title={post.frontmatter.title}
+      html={post.html}
+      image={post.frontmatter.image}
+      description={post.frontmatter.description}
+      date={post.frontmatter.date}
+      next={next}
+      previous={previous}
+    />
+  )
+}
+
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -76,6 +88,13 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             description
+            image {
+                childImageSharp {
+                    fluid(maxWidth: 2000) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
         }
     }
   }
