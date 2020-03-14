@@ -34,7 +34,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/cms/blog`,
+        path: `${__dirname}/src/cms/blog`,
         name: `blog`,
       },
     },
@@ -79,7 +79,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
-        modulePath: `${__dirname}/cms/cms.js`,
+        modulePath: `${__dirname}/src/cms/cms.js`,
         enableIdentityWidget: true,
       }
     },

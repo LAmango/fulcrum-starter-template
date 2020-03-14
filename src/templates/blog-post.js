@@ -4,14 +4,12 @@ import Img from "gatsby-image";
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ReactMarkdown from 'react-markdown'
 
-const BlogPostTemplate = props => {
+
+export const BlogPostTemplate = props => {
     return (
       <Layout location={props.location} title={props.title}>
-        <SEO
-          title={props.title}
-          description={props.description || props.excerpt}
-        />
         <h1>{props.title}</h1>
         <p>
           {props.date}
@@ -20,7 +18,10 @@ const BlogPostTemplate = props => {
           <Img fluid={props.image.childImageSharp.fluid} alt={props.title}/> :
           <img src={props.image} alt={props.title} />
         }
-        <div dangerouslySetInnerHTML={{ __html: props.html}} />
+        {props.isPreview ?
+          <ReactMarkdown source={props.html} /> :
+          <div dangerouslySetInnerHTML={{ __html: props.html}} />
+        }
         <hr/>
         <Bio />
 
