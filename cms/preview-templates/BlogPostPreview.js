@@ -16,8 +16,17 @@ class BlogPostPreview extends Component {
   }
 
   componentDidMount() {
+    /*
     const image = this.props.entry.getIn(['data', 'image'])
-    this._getImage(image);
+    console.log("image: ", image);
+    if(image) {
+      this.setState({image: image})
+      this.props.getAsset(image).then(value => {
+        this.setState({image: value.toString()})
+      })
+
+    }
+     */
   }
 
   render() {

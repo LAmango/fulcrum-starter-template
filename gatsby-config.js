@@ -2,6 +2,7 @@ var netlifyCmsPaths = {
   resolve: `gatsby-plugin-netlify-cms-paths`,
   options: {
     cmsConfig: `/static/admin/config.yml`,
+    enableIdentityWidget: true,
   },
 }
 
@@ -24,6 +25,7 @@ module.exports = {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
+    netlifyCmsPaths,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -49,6 +51,7 @@ module.exports = {
       options: {
         plugins: [
           netlifyCmsPaths,
+          'gatsby-remark-relative-images',
           {
             resolve: 'gatsby-remark-images',
             options: {
