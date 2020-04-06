@@ -9,13 +9,17 @@ var netlifyCmsPaths = {
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Gatsby Starter Personal Blog`,
+    title: `Fulcrum Template Starter`,
     author: `Lucas Albano`,
     description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `lucasalbano`,
-    },
+    pages: [
+      {heading: "Home", link: "/"},
+      {heading: "Services"},
+      {heading: "Products"},
+      {heading: "About Me", link: "/about-me"},
+      {heading: "What To Know", link: "/what-to-know"},
+      {heading: "Contact", link: "/contact"}
+    ]
   },
   plugins: [
     {
@@ -31,6 +35,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-postcss`,
     netlifyCmsPaths,
     {
       resolve: `gatsby-source-filesystem`,
