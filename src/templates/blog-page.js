@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown"
 export const BlogPostTemplate = props => {
   return (
     <Layout location={props.location} title={props.title}>
+      <SEO title={props.title} />
       <h1>{props.title}</h1>
       <p>{props.date}</p>
       {props.image.childImageSharp ? (
