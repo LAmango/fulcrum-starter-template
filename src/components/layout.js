@@ -2,7 +2,7 @@ import React from "react"
 import "../../static/assets/tailwind.css"
 import Footer from "./footer"
 import Header from "./header"
-import { useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 const Layout = props => {
   const { children } = props
