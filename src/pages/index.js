@@ -1,9 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
+import Form from "../components/common/form"
+import Textfield from "../components/common/textfield"
+import TextArea from "../components/common/textArea"
+import Button from "../components/common/button"
 
 class IndexPage extends React.Component {
   render() {
@@ -16,6 +17,15 @@ class IndexPage extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <img style={{ margin: 0 }} src="./GatsbyScene.svg" alt="Gatsby Scene" />
+        <Form
+          submit={() => {}}
+          submitButton={
+          <Button type="submit">Submit</Button>
+        }>
+          <Textfield label="name" name="name" type="text"/>
+          <Textfield label="email" name="email" type="email"/>
+          <TextArea label="message" name="message" />
+        </Form>
       </Layout>
     )
   }

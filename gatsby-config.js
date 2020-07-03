@@ -14,12 +14,12 @@ module.exports = {
     description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
     pages: [
       {heading: "Home", link: "/"},
-      {heading: "Services"},
-      {heading: "Products"},
-      {heading: "About Me", link: "/about-me"},
-      {heading: "What To Know", link: "/what-to-know"},
-      {heading: "Contact", link: "/contact"}
-    ]
+      {heading: "Services", link: "/"},
+      {heading: "Products", link: "/"},
+      {heading: "About Me", link: "/"},
+      {heading: "Contact", link: "/"}
+    ],
+    keywords: ["fulcrum", "starter", "template"]
   },
   plugins: [
     {

@@ -39,10 +39,11 @@ exports.createPages = ({ graphql, actions }) => {
       const next = index === 0 ? null : posts[index - 1].node
 
       const pathStart = post.node.frontmatter.templatekey.split("-")[0];
+      const { templatekey } = post.node.frontmatter;
 
       createPage({
         path: `${pathStart}${post.node.fields.slug}`,
-        component: blogPost,
+        component: path.resolve(`./src/templates/${templatekey}.js`),
         context: {
           slug: post.node.fields.slug,
           previous,
