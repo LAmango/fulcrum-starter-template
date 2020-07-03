@@ -10,9 +10,7 @@ const Header = props => {
   return (
     <div className="flex justify-between bg-black p-6 flex-wrap">
       <span className="font-semibold text-xl text-white tracking-tight">
-        <Link to={"/"}>
-        {title}
-        </Link>
+        <Link to={"/"}>{title}</Link>
       </span>
       <div className="flex-grow md:flex-none" />
       <div className="flex-initial md:hidden">
@@ -40,9 +38,10 @@ const Header = props => {
               <div className="text-sm md:flex-grow">
                 {navItems.map(item =>
                   item.subHeading ? (
-                    <MobileMenuItem item={item} />
+                    <MobileMenuItem key={item.heading} item={item} />
                   ) : (
                     <Link
+                      key={item.heading}
                       to={item.link}
                       className="block pb-4 md:inline-block md:mt-0 text-white mr-4"
                     >
@@ -58,9 +57,10 @@ const Header = props => {
           <div className="text-sm mx-auto">
             {navItems.map(item =>
               item.subHeading ? (
-                <DropMenuItem item={item} />
+                <DropMenuItem key={item.heading} item={item} />
               ) : (
                 <Link
+                  key={item.heading}
                   to={item.link}
                   className="block mt-4 md:inline-block md:mt-0 md:mx-4 text-white hover:text-white mr-4"
                 >

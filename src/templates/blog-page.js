@@ -53,7 +53,6 @@ export const BlogPostTemplate = props => {
 
 const BlogPost = props => {
   const post = props.data.markdownRemark
-  const siteTitle = props.data.site.siteMetadata.title
   const { previous, next } = props.pageContext
 
   return (

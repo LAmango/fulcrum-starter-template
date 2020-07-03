@@ -16,9 +16,12 @@ const DropMenuItem = ({ item }) => {
   return (
     <>
       <div className="mt-4 md:inline-block md:mt-0 md:mx-4 text-white hover:text-white mr-4 bg-black">
-        <a onClick={headingClicked} className="cursor-pointer z-30 bg-black">
+        <button
+          onClick={headingClicked}
+          className="cursor-pointer z-30 bg-black"
+        >
           {item.heading}
-        </a>
+        </button>
         <div
           ref={ref}
           className={`transition duration-300 ease-in-out absolute transform ${
