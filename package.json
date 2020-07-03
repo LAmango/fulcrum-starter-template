@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Lucas Albano",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.1",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.25",
     "gatsby-image": "^2.0.39",
@@ -29,6 +30,7 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "netlify-cli": "^2.35.0",
     "netlify-cms-app": "^2.11.26",
+    "netlify-lambda": "^1.6.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",

@@ -8,12 +8,14 @@ const Header = props => {
   const [menu, setMenu] = useState(false)
   const { navItems = [], title } = props
   return (
-    <div className="flex justify-between bg-black p-6">
+    <div className="flex justify-between bg-black p-6 flex-wrap">
       <span className="font-semibold text-xl text-white tracking-tight">
+        <Link to={"/"}>
         {title}
+        </Link>
       </span>
       <div className="flex-grow md:flex-none" />
-      <div className="block md:hidden">
+      <div className="flex-initial md:hidden">
         <button
           onClick={() => setMenu(!menu)}
           className="items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white"
@@ -28,7 +30,7 @@ const Header = props => {
           </svg>
         </button>
       </div>
-      <nav className="flex -mr-4">
+      <nav className="flex w-full md:w-auto -mr-4">
         <div
           id="mobile"
           className="block w-full md:flex md:items-center md:w-auto md:hidden"

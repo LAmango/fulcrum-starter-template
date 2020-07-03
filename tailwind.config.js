@@ -5,9 +5,12 @@ module.exports = {
                     'maxWidth': "max-width"
                   },
                   height: {
-                    '10p': "10%",
-                    '90p': "90%"
-                  }
+                    '5p': "5%",
+                    '95p': "95%"
+                  },
+            maxWidth: {
+                    "screen-mobile": "375px"
+            }
           },
   },
   variants: {},

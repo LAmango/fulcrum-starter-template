@@ -18,7 +18,8 @@ module.exports = {
       {heading: "Products", link: "/"},
       {heading: "About Me", link: "/"},
       {heading: "Contact", link: "/"}
-    ]
+    ],
+    keywords: ["fulcrum", "starter", "template"]
   },
   plugins: [
     {
@@ -46,7 +47,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/cms/blog`,
+        path: `${__dirname}/src/cms/blog`,
         name: `blog`,
       },
     },
