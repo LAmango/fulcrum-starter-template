@@ -1,13 +1,13 @@
 import React from "react"
 
-import Header from "../components/header"
+import Header2 from "../components/header2"
 
 export default {
-  title: "Headers/Header1",
-  component: Header,
+  title: "Headers/Header2",
+  component: Header2,
 }
 
-const Template = args => <Header {...args} />
+const Template = args => <Header2 {...args} />
 
 export const WithTitle = Template.bind({})
 WithTitle.args = {

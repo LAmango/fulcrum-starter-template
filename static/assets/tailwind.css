@@ -43,6 +43,22 @@ footer {
     margin-left: 15px;
 }
 
+/* BUTTON STYLES */
+.button-small {
+    font-size: 12px;
+    padding: 2px 4px;
+}
+
+.button-medium {
+    font-size: 14px;
+    padding: 4px 8px;
+}
+
+.button-large {
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
 @tailwind components;
 
 @tailwind utilities;

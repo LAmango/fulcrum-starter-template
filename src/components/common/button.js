@@ -7,6 +7,7 @@ const Button = ({
                   primary,
                   size,
                   color,
+                  backgroundColor,
                   stretch,
                   className,
                   ...props
@@ -16,13 +17,15 @@ const Button = ({
       className={`
       button
       border
-      border-${color}
+      rounded-md
+      border-${backgroundColor}
       ${stretch ? "w-full" : ""}
       ${
         primary
-          ? `button-primary bg-${color} hover:bg-white`
-          : `button-default bg-white hover:bg-${color}`
+          ? `text-${color} bg-${backgroundColor} hover:bg-transparent`
+          : `text-${color} bg-transparent hover:bg-${backgroundColor}`
       }
+      font-bold
       button-${size}
       `}
       onClick={onClick}

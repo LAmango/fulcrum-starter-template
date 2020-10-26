@@ -6,6 +6,7 @@
   "author": "Lucas Albano",
   "dependencies": {
     "@sendgrid/mail": "^7.2.1",
+    "@storybook/addon-viewport": "^6.0.26",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.25",
     "gatsby-image": "^2.0.39",
