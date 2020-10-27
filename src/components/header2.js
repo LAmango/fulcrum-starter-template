@@ -1,9 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
 import DropMenuItem from "./dropMenuItem"
 import { Link } from "gatsby"
+import Rotate from 'react-reveal/Rotate';
+import {MdClear} from "react-icons/md"
+
 
 const Header = ({title, navItems}) => {
+  const [menu, setMenu] = useState(false)
   return (
+    <div className="relative">
+      {menu &&
+        <div className="absolute sm:hidden w-full">
+          <Rotate top right duration={200}>
+            <div className="w-full bg-transparent p-4">
+              <div className={`w-full bg-white rounded-lg shadow-md relative`}>
+                <button className="absolute right-0 m-4" onClick={() => setMenu(false)}><MdClear/></button>
+                <div className="py-4">
+                  {navItems.map(item => (
+                    <p key={item.heading} className="text-center space-y-4">{item.heading}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Rotate>
+        </div>
+      }
     <div className="bg-black p-6 flex justify-between">
       <h2 className="text-white text-2xl">{title}</h2>
       <div className="flex-initial md:hidden">
@@ -39,7 +60,8 @@ const Header = ({title, navItems}) => {
           </div>
         </div>
     </div>
-  )
+    </div>
+)
 }
 
 export default Header;
