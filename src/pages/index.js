@@ -19,12 +19,11 @@ class IndexPage extends React.Component {
         <img style={{ margin: 0 }} src="./GatsbyScene.svg" alt="Gatsby Scene" />
         <Form
           submit={() => {}}
-          submitButton={
-          <Button type="submit">Submit</Button>
-        }>
+        >
           <Textfield label="name" name="name" type="text"/>
           <Textfield label="email" name="email" type="email"/>
           <TextArea label="message" name="message" />
+          <Button label="Submit" type="submit" />
         </Form>
       </Layout>
     )

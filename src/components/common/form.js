@@ -13,9 +13,16 @@ const Form = props => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {React.Children.map(children, child => {
-        return React.cloneElement(child, { ref: register({required: true}), errors: errors });
+        return child.props.name
+        ? React.cloneElement(child, {
+            ...{
+              ...child.props,
+              ref: register,
+              errors: errors
+          }
+        })
+          : child
       })}
-      {props.submitButton}
     </form>
   )
 }
@@ -23,7 +30,6 @@ const Form = props => {
 Form.propTypes = {
   legend: PropTypes.string,
   submit: PropTypes.func.isRequired,
-  submitButton: PropTypes.element.isRequired
 }
 
 export default Form

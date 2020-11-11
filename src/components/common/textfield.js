@@ -7,7 +7,7 @@ const Textfield = React.forwardRef((props, ref) => {
       {props.label && <label htmlFor={props.name}>{props.label}</label>}
       <input
         {...props}
-        ref={ref}
+        ref={ref({required: true, ...props.options})}
         className="border border-gray-900 p-1 focus:outline-none"
       />
       {props.errors[props.name] && (
@@ -25,6 +25,7 @@ Textfield.propTypes = {
   type: PropTypes.string.isRequired,
   errors: PropTypes.object,
   placeholder: PropTypes.string,
+  options: PropTypes.object
 }
 
 export default Textfield
